@@ -41,17 +41,17 @@ export default class App extends Component {
             // email={this.state.basics.email}
           />
           <About
-            text={this.state.about.text}
+            // text={this.state.about.text}
           />
           <Education
-            schoolName={this.state.education.schoolName}
-            degreeName={this.state.education.degreeName}
-            schoolYear={this.state.education.schoolYear} 
+            // schoolName={this.state.education.schoolName}
+            // degreeName={this.state.education.degreeName}
+            // schoolYear={this.state.education.schoolYear} 
           />
           <Experience
-            companyName={this.state.experience.companyName}
-            positionName={this.state.experience.positionName}
-            workYear={this.state.experience.workYear} 
+            // companyName={this.state.experience.companyName}
+            // positionName={this.state.experience.positionName}
+            // workYear={this.state.experience.workYear} 
           />
         </div>
         <div className="right-side">

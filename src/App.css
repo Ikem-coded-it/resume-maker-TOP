@@ -3,6 +3,14 @@
   padding: 0;
 }
 
+:root {
+  --left-side-background: #9d174d;
+  --left-side-heading-color: #ec4899;
+  --right-side-background: #71717a;
+  --bright-white: #f3f4f6;
+  --dark-white: #d1d5db;
+}
+ 
 #root {
   width: 100vw;
   height: fit-content;
@@ -15,7 +23,7 @@ h2 {
 }
 
 .template {
-  width: 67%;
+  width: 60%;
   height: 150vh;
   border: 1px solid black;
   display: flex;
@@ -31,11 +39,12 @@ h2 {
   display: flex;
   flex-direction: column;
   width: 55%;
+  background-color: var(--left-side-background);
 }
 
 .left-side > div {
-  flex-grow: 1;
-  margin-left: 20px;
+  height: 25%;
+  margin-left: 5px;
 }
 
 .right-side {
