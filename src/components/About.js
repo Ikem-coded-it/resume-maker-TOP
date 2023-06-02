@@ -4,10 +4,10 @@ import "../styles/about.css";
 class Form extends Component {
   render() {
     return(
-      <form className={this.props.className}>
+      <form className={this.props.className} onSubmit={this.props.onSubmit}>
         <div className="text-area-container">
           <label htmlFor="about">Tell us a little  bit about you</label>
-          <textarea name="about" className="about-text">{this.props.value}</textarea>
+          <textarea name="about" maxLength={220}></textarea>
         </div>
         <div className="btn-container">
           <button type="submit">Edit</button>
@@ -21,24 +21,49 @@ export default class About extends Component {
   constructor(prop) {
     super(prop)
     this.state = {
+      input: "",
       value: "",
-      form: "",
-      editBtn: "edit-btn-container",
+      formClass: "about-form",
+      editBtn: "about-edit-btn-container",
     };
     this.handleMouseOver = this.handleMouseOver.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   async handleMouseOver() {
     await this.setState({
-      editBtn: "edit-btn-container visible"
+      editBtn: "about-edit-btn-container visible"
     })
   }
 
   async handleMouseLeave() {
     await this.setState({
-      editBtn: "edit-btn-container"
+      editBtn: "about-edit-btn-container"
     })
+  }
+
+  handleClick() {
+    if (this.state.formClass === "about-form form-visible") {
+      this.setState({formClass: "about-form"})
+      return
+    }
+    this.setState({formClass: "about-form form-visible"})
+  }
+
+  async handleSubmit(e) {
+    e.preventDefault()
+    
+    await this.setState({
+      input: e.target.about.value
+    })
+ 
+    await this.setState({
+      value: this.state.input
+    })
+
+    this.handleClick()
   }
 
   render () {
@@ -52,8 +77,11 @@ export default class About extends Component {
           <i className="fa-solid fa-edit"></i>
         </div>
         <h2 className="section-heading">About Me</h2>
-        <p className="about-text">{this.state.text}</p>
-        <Form value={this.state.value} className={this.state.form} />
+        <p className="about-text">{this.state.value}</p>
+        <Form 
+          onSubmit={this.handleSubmit} 
+          className={this.state.formClass} 
+        />
       </div>
     )
   }

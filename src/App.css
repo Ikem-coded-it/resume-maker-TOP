@@ -44,7 +44,8 @@ h2 {
 
 .left-side > div {
   height: 25%;
-  margin-left: 5px;
+  max-width: 60%;
+  margin-left: 15px;
 }
 
 .right-side {

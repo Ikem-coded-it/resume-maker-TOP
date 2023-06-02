@@ -4,6 +4,7 @@ class EducationUnit extends Component {
   render() {
     return (
       <div className="education-unit">
+        {/* <i className="fa-solid fa-edit" onClick={this.handleClick}></i> */}
         <p className="school-name">{this.props.schoolName}</p>
         <p className="degree-name">{this.props.degreeName}</p>
         <p className="school-year">{this.props.schoolYear}</p>
