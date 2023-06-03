@@ -20,10 +20,15 @@
   pointer-events: none;
 }
 
+.edit-btn-container:hover {
+  background-color: var(--bright-white);
+}
+
 .visible {
   opacity: 1;
   pointer-events: auto;
   z-index: 1;
+  cursor: pointer;
 }
 
 .fa-edit {

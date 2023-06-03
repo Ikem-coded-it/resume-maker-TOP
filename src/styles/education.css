@@ -1,0 +1,105 @@
+.education-section {
+  position: relative;
+}
+
+.education-edit-btn-container {
+  position: absolute;
+  left: -6%;
+  top: -11%;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-white);
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+}
+
+.education-edit-btn-container:hover {
+  background-color: var(--bright-white);
+}
+
+.visible {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.education-units-container {
+  margin-left: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: var(--dark-white);
+  font-size: 12px;
+}
+
+.education-unit {
+  position: relative;
+}
+
+.education-unit>.fa-edit {
+  position: absolute;
+  right: 0;
+  top: 7px;
+  color: var(--dark-white);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.fa-edit-education:hover {
+  color: var(--bright-white);
+}
+
+.fa-trash-can {
+  position: absolute;
+  right: 0;
+  bottom: 7px;
+  color: var(--dark-white);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.fa-trash-can:hover {
+  color: var(--bright-white);
+}
+
+.education-unit>p {
+  font-weight: bold;
+}
+
+.institution-name {
+  color: var(--bright-white);
+  font-size: 17px;
+}
+
+.honors-title {
+  font-size: 15px;
+}
+
+.education-form {
+  position: absolute;
+  right: 108%;
+  top: 8%;
+  background-color: var(--right-side-background);
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+  padding: 10px;
+}
+
+.form-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.school-year-input-container input {
+  display: flex;
+}

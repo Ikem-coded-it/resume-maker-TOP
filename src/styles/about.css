@@ -19,6 +19,10 @@
   pointer-events: none;
 }
 
+.about-edit-btn-container:hover {
+  background-color: var(--bright-white);
+}
+
 .visible {
   opacity: 1;
   pointer-events: auto;
@@ -36,6 +40,7 @@
   font-size: 15px;
   padding: 7px;
   border: none;
+  font-weight: bold;
 }
 
 .about-form {
