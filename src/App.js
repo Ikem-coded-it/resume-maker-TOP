@@ -5,6 +5,7 @@ import Education from "./components/Education";
 import Experience from "./components/Experience";
 import Profile from "./components/picture";
 import Projects from "./components/Project";
+import Hobby from "./components/Hobby";
 import "./App.css"
  
 export default class App extends Component {
@@ -20,6 +21,7 @@ export default class App extends Component {
         <div className="right-side">
           <Profile />
           <Projects />
+          <Hobby />
         </div>
       </div>
     )

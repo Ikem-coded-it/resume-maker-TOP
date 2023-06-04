@@ -1,0 +1,66 @@
+.hobby-section {
+  width: 100%;
+  position: relative;
+}
+
+.hobby-edit-btn-container {
+  position: absolute;
+  right: 40px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-white);
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+}
+
+.hobby-list {
+  width: 90%;
+}
+
+.hobby-unit {
+  position: relative;
+  width: 100%;
+  color: var(--dark-white);
+  font-weight: 300;
+}
+
+.fa-trash-can-hobby {
+  position: absolute;
+  right: 30%;
+}
+
+.visible {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.hobby-form {
+  position: absolute;
+  right: -66%;
+  top: 8%;
+  background-color: var(--left-side-background);
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+  padding: 10px;
+}
+
+.form-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hobby-input-container {
+  display: flex;
+  flex-direction: column;
+}
