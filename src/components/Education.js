@@ -28,20 +28,20 @@ class EducationForm extends Component {
       <form className={this.props.className} onSubmit={this.props.onSubmit}>
         <div className="institution-input-container">
           <label htmlFor="institution">Institution</label>
-          <input type="text" name="institution" className="institution-name-input" required/>
+          <input type="text" name="institution" className="institution-name-input" maxLength={30} required/>
         </div>
         <div className="honors-input-container">
           <label htmlFor="honors">Honors</label>
-          <input type="text" name="honors" required/>
+          <input type="text" name="honors" className="honors-name-input" maxLength={30} required/>
         </div>
         <div className="school-year-input-container">
           <div>
             <label htmlFor="start end">start</label>
-            <input type="date" name="start" required/>
+            <input type="date" name="start" className="start-date-input" required/>
           </div>
           <div>
             <label htmlFor="start end">end</label>
-            <input type="date" name="end" required/>
+            <input type="date" name="end" className="end-date-input" required/>
           </div>
         </div>
         <div className="btn-container">
@@ -142,10 +142,16 @@ export default class Education extends Component {
 
     this.setState({form: "edit"}, () => {
       const schoolNameInput = document.getElementsByClassName("institution-name-input")[0]
+      const honorsNameInput = document.getElementsByClassName("honors-name-input")[0]
+      const startDateInput = document.getElementsByClassName("start-date-input")[0]
+      const endDateInput = document.getElementsByClassName("end-date-input")[0]
       const key = e.target.getAttribute("data-id");
       this.state.units.forEach(unit => {
         if (unit.key === key) {
           schoolNameInput.value = unit.child.institution
+          honorsNameInput.value = unit.child.honors
+          startDateInput.value = unit.child.start
+          endDateInput.value = unit.child.end
           this.setState({currentEdit: unit.key}, () => {
             schoolNameInput.focus()
             return;

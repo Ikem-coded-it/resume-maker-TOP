@@ -7,11 +7,11 @@ class Form extends Component {
       <form className={this.props.className} onSubmit={this.props.onSubmit}>
         <div className="form-name-container">
           <label htmlFor="name">Name</label>
-          <input className="name-input" name="name" type="text" />
+          <input className="name-input" name="name" type="text" maxLength={20} />
         </div>
         <div className="form-title-container">
           <label htmlFor="title">Title</label>
-          <input className="title-input" name="title" type="text" />
+          <input className="title-input" name="title" type="text" maxLength={15} />
         </div>
         <div className="form-phone-number-container">
           <label htmlFor="phone-number">Phone number</label>

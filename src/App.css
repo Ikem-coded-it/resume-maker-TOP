@@ -50,3 +50,11 @@ h2 {
   width: 45%;
   background-color: var(--right-side-background);
 }
+
+.right-side > div {
+  margin-left: 15px;
+}
+
+.right-side h2 {
+  color: var(--bright-white);
+}

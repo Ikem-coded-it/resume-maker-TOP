@@ -1,0 +1,88 @@
+.projects-section {
+  position: relative;
+}
+
+.project-edit-btn-container {
+  position: absolute;
+  right: 40px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-white);
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+}
+
+.visible {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.project-unit {
+  position: relative;
+  width: 80%;
+  margin-top: 10px;
+}
+
+.fa-trash-can-project {
+  top: 5px;
+  right: 20px;
+}
+
+.fa-edit-project {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  color: var(--dark-white);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.fa-edit-project:hover {
+  color: var(--bright-white);
+}
+
+.project-title {
+  color: var(--dark-white);
+}
+
+.project-description {
+  color: var(--dark-white);
+  font-weight: 600;
+  overflow-wrap: break-word;
+  width: 90%;
+}
+
+.project-form {
+  position: absolute;
+  right: -66%;
+  top: 8%;
+  background-color: var(--left-side-background);
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+  padding: 10px;
+}
+
+.title-input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-title-input {
+  width: 168px;
+} 
+
+.form-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
