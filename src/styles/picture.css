@@ -1,0 +1,74 @@
+.pic-resume-container {
+  width: 100%;
+  height: 22rem;
+  position: relative;
+}
+
+.pic-container {
+  height: 90%;
+  width: 75%;
+  border-right: 17px solid var(--bright-white);
+  border-bottom: 17px solid var(--bright-white);
+  border-left: 17px solid var(--bright-white);
+  position: absolute;
+  left: -20px;
+}
+
+.picture-edit-btn-container {
+  position: absolute;
+  right: 40px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-white);
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+}
+
+.picture-edit-btn-container:hover {
+  background-color: var(--bright-white);
+}
+
+.visible {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.img {
+  height: 100%;
+  width: 100%;
+}
+
+.resume {
+  position: absolute;
+  color: var(--dark-white);
+  font-size: 40px;
+  right: -30px;
+  top: 150px;
+  transform: rotate(-90deg);
+}
+
+.picture-form {
+  position: absolute;
+  right: -66%;
+  top: 8%;
+  background-color: var(--left-side-background);
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+  padding: 10px;
+}
+
+.form-visible {
+  opacity: 1;
+  pointer-events: auto;
+}

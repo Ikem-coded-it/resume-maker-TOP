@@ -22,7 +22,7 @@ export default class About extends Component {
     super(prop)
     this.state = {
       input: "",
-      value: "I'm a creative person who has worked as an art director for the last 3 years and as a studio lead for 2 years before that. I'm happy, friendly, and love a good challenege.",
+      value: "I'm a creative person who has worked as an art director for the last 3 years and as a studio lead for 2 years before that. I'm happy, friendly, and love a good challenge.",
       formClass: "about-form",
       editBtn: "about-edit-btn-container",
     };

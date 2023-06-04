@@ -25,13 +25,11 @@ h2 {
 .template {
   width: 60%;
   height: 150vh;
-  border: 1px solid black;
   display: flex;
   margin-top: 40px;
 }
 
 .template > div {
-  border: 1px solid black;
   height: 100%;
 }
 
@@ -50,4 +48,5 @@ h2 {
 
 .right-side {
   width: 45%;
+  background-color: var(--right-side-background);
 }
