@@ -44,7 +44,7 @@
 
 .education-unit>.fa-edit {
   position: absolute;
-  right: 0;
+  right: -30px;
   top: 7px;
   color: var(--dark-white);
   font-size: 15px;
@@ -57,7 +57,7 @@
 
 .fa-trash-can {
   position: absolute;
-  right: 0;
+  right: -30px;
   bottom: 7px;
   color: var(--dark-white);
   font-size: 15px;

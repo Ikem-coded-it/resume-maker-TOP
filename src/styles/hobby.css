@@ -27,11 +27,13 @@
   width: 100%;
   color: var(--dark-white);
   font-weight: 300;
+  margin-bottom: 5px;
 }
 
 .fa-trash-can-hobby {
   position: absolute;
   right: 30%;
+  bottom: 0;
 }
 
 .visible {
