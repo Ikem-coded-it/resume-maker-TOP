@@ -64,3 +64,66 @@
   display: flex;
   flex-direction: column;
 }
+
+@media only screen and (max-width: 600px) {
+  .hobby-section {
+    width: 90%;
+  }
+  .hobby-edit-btn-container {
+    right: 15px;
+    top: -20px;
+  }
+
+  .hobby-unit {
+    font-weight: normal;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+
+  .fa-trash-can-hobby {
+    right: 10%;
+    top: 2px;
+    font-size: 12px;
+  }
+
+  .visible {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  .hobby-form {
+    position: absolute;
+    right: -66%;
+    top: 8%;
+    background-color: var(--left-side-background);
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 200ms ease;
+    pointer-events: none;
+    padding: 10px;
+  }
+
+  .form-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .hobby-input-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .hobby-form {
+    right: 10px;
+    top: 2px;
+    width: 100%;
+    padding: 0;
+  }
+
+  .hobby-form input {
+    width: 80%;
+  }
+}

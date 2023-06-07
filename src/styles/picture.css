@@ -72,3 +72,43 @@
   opacity: 1;
   pointer-events: auto;
 }
+
+@media only screen and (max-width: 600px) {
+  .pic-resume-container {
+    width: 90%;
+    height: 22rem;
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+
+  .pic-container {
+    height: 90%;
+    width: 75%;
+    border-right: 14px solid var(--bright-white);
+    border-bottom: 14px solid var(--bright-white);
+    border-left: 14px solid var(--bright-white);
+    position: absolute;
+    left: -20px;
+  }
+
+  .picture-form {
+    right: 15px;
+    top: 2px;
+    width: 120%;
+    padding: 0;
+  }
+
+  .pic-resume-container {
+
+  }
+
+  .resume {
+    font-size: 20px;
+    right: 0;
+  }
+
+  .picture-form input {
+    width: 70%;
+  }
+}

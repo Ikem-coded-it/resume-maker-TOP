@@ -55,7 +55,7 @@
 
 .project-description {
   color: var(--dark-white);
-  font-weight: 600;
+  font-weight: 500;
   overflow-wrap: break-word;
   width: 90%;
 }
@@ -86,4 +86,45 @@
 .form-visible {
   opacity: 1;
   pointer-events: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .project-edit-btn-container {
+    right: 0;
+    top: -10px;
+  }
+
+  .project-unit {
+    width: 100%;
+  }
+
+  .fa-trash-can-project {
+    top: 5px;
+    right: 25px;
+  }
+
+  .fa-edit-project {
+    right: 2px;
+  }
+
+  .project-title {
+    font-size: 15px;
+  }
+
+  .project-description {
+    font-weight: normal;
+    font-size: 12px;
+    width: 90%;
+  }
+ 
+  .project-form {
+    right: 10px;
+    top: 2px;
+    width: 100%;
+    padding: 0;
+  }
+
+  .project-form input , .project-form textarea{
+    width: 80%;
+  }
 }

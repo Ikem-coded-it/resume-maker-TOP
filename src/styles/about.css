@@ -40,7 +40,7 @@
   font-size: 15px;
   padding: 7px;
   border: none;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .about-form {
@@ -59,7 +59,7 @@
 }
 
 textarea {
-  border-radius: 5px;
+  border-radius: 2px;
   background-color: var(--bright-white);
   min-height: 70px;
   max-height: 70px;
@@ -67,4 +67,43 @@ textarea {
   max-width: 170px;
   padding: 0 5px 0 5px;
   border: none;
+  margin-top: 5px;
+  box-shadow: 1px 1px 1px black;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .about-section {
+    padding: 0;
+  }
+
+  .about-edit-btn-container {
+    max-height: 30px;
+    width: 30px;
+  }
+
+  .section-heading {
+    margin: 0;
+  }
+
+  .about-text {
+    font-size: 12px;
+    padding: 0;
+    font-weight: 400;
+  }
+
+  .about-form {
+    left: 0;
+    top: 2px;
+    width: 150%;
+    padding: 0px;
+  }
+  
+  textarea {
+    min-height: 30px;
+    min-width: 100px;
+  }
 }

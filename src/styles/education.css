@@ -103,3 +103,65 @@
 .school-year-input-container input {
   display: flex;
 }
+
+@media only screen and (max-width: 600px) {
+  .education-edit-btn-container {
+    top: -14%;
+  }
+ 
+  .education-units-container {
+    margin-left: 6px;
+    font-size: 10px;
+  }
+
+  .education-unit>.fa-edit {
+    position: absolute;
+    right: -25px;
+    top: 7px;
+    font-size: 12px;
+  }
+
+  .fa-edit-education:hover {
+    color: var(--bright-white);
+  }
+
+  .fa-trash-can {
+    right: -25px;
+    bottom: 7px;
+    font-size: 15px;
+  }
+
+  .education-unit>p {
+    font-weight: normal;
+    font-size: 12px;
+  }
+
+  .institution-name {
+    color: var(--bright-white);
+    font-size: 13px;
+  }
+
+  .honors-title {
+    font-size: 10px;
+  }
+
+  .education-form {
+    left: 0;
+    top: 8%;
+    width: 130%;
+    padding: 2px;
+  }
+
+  .education-form input {
+    width: 70%;
+  }
+
+  .form-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .school-year-input-container input {
+    display: flex;
+  }
+}

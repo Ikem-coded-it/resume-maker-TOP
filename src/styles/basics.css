@@ -98,14 +98,21 @@
 
 label {
   color: var(--bright-white);
-  font-weight: bold;
+  font-weight: 400;
 }
 
 input {
   width: 70%;
-  border-radius: 5px;
-  height: 20px;
+  border-radius: 2px;
+  height: 25px;
+  font-weight: 400;
   padding: 0 5px 0 5px;
+  border: none;
+  box-shadow: 1px 1px 1px black;
+}
+
+input:focus {
+  outline: none;
 }
 
 .form-btn-container {
@@ -126,4 +133,67 @@ button {
 
 button:hover {
   background-color: #db2777;
+}
+
+@media only screen and (max-width: 600px) {
+  .edit-btn-container {
+    max-height: 30px;
+    width: 30px;
+    top: 0;
+  }
+ 
+  .fa-edit {
+    font-size: 15px;
+  }
+
+  .basics-section>div {
+    height: 40%;
+  }
+
+  .name-title {
+    height: 40%;
+  }
+
+  .name {
+    font-size: 20px;
+    color: var(--left-side-heading-color)
+  }
+
+  .title {
+    font-size: 15px;
+  }
+
+  .phone-email {
+    gap: 5px;
+  }
+
+  .phone-email>div {
+    font-size: 12px;
+  }
+
+  .basics-form {
+    position: absolute;
+    left: 0;
+    width: 150%;
+    padding: 0;
+  }
+
+  .basics-form>div {
+    margin: 0;
+  }
+
+  label {
+    font-size: 15px;
+  }
+
+  input {
+    width: 100%;
+    height: 20px;
+  }
+
+  button {
+    width: 50px;
+    height: 20px;
+    font-weight: 400;
+  }
 }

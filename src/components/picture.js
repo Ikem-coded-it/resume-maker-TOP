@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import DefaultImage from "./image/download.png";
 import "../styles/picture.css";
 
 class PictureForm extends Component {
@@ -16,7 +17,7 @@ export default class Profile extends Component {
   constructor(prop) {
     super(prop)
     this.state = {
-      src: "",
+      src: DefaultImage,
       editBtn: "picture-edit-btn-container",
       formClass: "picture-form",
     }
@@ -52,6 +53,12 @@ export default class Profile extends Component {
     this.setState({src: URL.createObjectURL(file)})
     this.setState({formClass: "picture-form"});
   }
+
+  // backgroundImage = {backgroundImage: `url(${this.state.src})`}
+  // repeat = {backgroundRepeat: "no-repeat"}; 
+  // size = {backgroundSize: "cover"};
+  // position = {backgroundPosition: "center"};
+
 
   render() {
     return (
