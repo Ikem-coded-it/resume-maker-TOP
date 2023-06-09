@@ -1,228 +1,270 @@
-// Uses education styling
-import React, { Component } from "react";
+//Replicated education.js and used education styling
+import React, { useState } from "react";
 import "../styles/education.css";
 import {v4 as uuidv4} from "uuid";
 
-class ExperienceUnits extends Component {
-  render() {
-    return (
-      <div className="education-units-container">
-        {
-          this.props.units.map(unit => {
-            return <div className="education-unit" key={unit.key}>
-              <i className="fa-regular fa-edit fa-edit-education" onClick={this.props.edit} data-id={unit.key}></i>
-              <i className="fa-regular fa-trash-can" onClick={this.props.delete} data-id={unit.key}></i>
-              <h3 className="institution-name">{unit.child.institution}</h3>
-              <p className="honors-title">{unit.child.honors}</p>
-              <p className="school-year">{unit.child.start.split('-')[0]} - {unit.child.end.split('-')[0]}</p> {/**split to get year */}
-            </div>;
-          })
-        }
-      </div>
-    )
-  }
+function ExperienceUnits({ units, deleteUnit, edit }) {
+  return (
+    <div className="education-units-container">
+      {
+        units.map(unit => {
+          return <div className="education-unit" key={unit.key}>
+            <i 
+              className="fa-regular fa-edit fa-edit-education" 
+              onClick={edit} data-id={unit.key}>
+            </i>
+            <i 
+              className="fa-regular fa-trash-can" 
+              onClick={deleteUnit}
+              data-id={unit.key}
+            ></i>
+            <h3 
+              className="institution-name">
+                {unit.child.institution}
+            </h3>
+            <p 
+              className="honors-title">
+                {unit.child.honors}
+            </p>
+            <p 
+              className="school-year">
+                {unit.child.start.split('-')[0]} - {unit.child.end.split('-')[0]} {/**split to get year */}
+              </p>
+          </div>;
+        })
+      }
+    </div>
+  )
 }
 
-class ExperienceForm extends Component {
-  render() {
+function ExperienceForm ({ className, onSubmit }) {
     return (
-      <form className={this.props.className} onSubmit={this.props.onSubmit}>
-        <div className="institution-input-container">
-          <label htmlFor="institution">Company Name</label>
-          <input type="text" name="institution" className="company-name-input" maxLength={30} required/>
+      <form className={className} onSubmit={onSubmit}>
+        <div 
+          className="institution-input-container">
+            <label 
+              htmlFor="institution">
+                Company
+            </label>
+            <input 
+              type="text" 
+              name="institution" 
+              className="company-name-input" 
+              maxLength={30} 
+              required/>
         </div>
-        <div className="honors-input-container">
-          <label htmlFor="honors">Position</label>
-          <input type="text" name="honors" className="position-name-input" maxLength={30} required/>
+
+        <div 
+          className="honors-input-container">
+            <label 
+              htmlFor="honors">
+                Position
+            </label>
+          <input 
+            type="text" 
+            name="honors" 
+            className="position-name-input" 
+            maxLength={30} 
+            required/>
         </div>
-        <div className="school-year-input-container">
+
+        <div 
+          className="school-year-input-container">
           <div>
-            <label htmlFor="start end">start</label>
-            <input type="date" name="start" className="job-start-date-input" required/>
+            <label 
+              htmlFor="start end">
+                start
+            </label>
+            <input 
+              type="date" 
+              name="start" 
+              className="start-date" 
+              required/>
           </div>
           <div>
-            <label htmlFor="start end">end</label>
-            <input type="date" name="end" className="job-end-date-input" required/>
+            <label 
+              htmlFor="start end">
+                end
+            </label>
+            <input 
+              type="date" 
+              name="end" 
+              className="end-date" 
+              required/>
           </div>
         </div>
-        <div className="btn-container">
-          <button type="submit" id="education-form-btn">Add</button>
+
+        <div 
+          className="btn-container">
+            <button 
+              type="submit" 
+              id="experience-form-btn">
+                Add
+            </button>
         </div>
       </form>
     )
-  }
 }
 
-export default class Experience extends Component {
-  constructor(prop) {
-    super(prop)
-    this.state = {
-      editBtn: "education-edit-btn-container",
-      formClass: "education-form",
-      input: {
-        institution: "",
-        honors: "",
-        start: "",
-        end: "",
-      },
-      units: [
-        {
-          key: uuidv4(),
-          child: {
-            institution: "Microsoft",
-            honors: "Senior Fullstack engineer",
-            start: "2018-11-01",
-            end: "2022-06-01",
-          }
-        },
-      ],
-      form: "new",
-      currentEdit: "",
-    }
-    this.handleClick = this.handleClick.bind(this)
-    this.handleMouseOver = this.handleMouseOver.bind(this)
-    this.handleMouseLeave = this.handleMouseLeave.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleEdit = this.handleEdit.bind(this)
-    this.finishEdit = this.finishEdit.bind(this)
-    this.handleDelete = this.handleDelete.bind(this)
+export default function Education() {
+  const [editBtn, setEditBtn] = useState("education-edit-btn-container")
+  const [formClass, setFormClass] = useState("education-form")
+  const [units, setUnits] = useState([
+    {
+      key: uuidv4(),
+      child: {
+        institution: "Microsoft",
+        honors: "Senior developer",
+        start: "2018-11-01",
+        end: "2022-06-01",
+      }
+    },
+  ])
+  const [form, setForm] = useState("new")
+  const [currentEdit, setCurrentEdit] = useState("")
+
+  const handleMouseOver = () => {
+    setEditBtn("education-edit-btn-container visible")
   }
 
-  async handleMouseOver() {
-    await this.setState({
-      editBtn: "education-edit-btn-container visible"
-    })
+  const handleMouseLeave = () => {
+    setEditBtn("education-edit-btn-container")
   }
 
-  async handleMouseLeave() {
-    await this.setState({
-      editBtn: "education-edit-btn-container"
-    })
-  }
-
-  handleClick(e) {
-    if (this.state.formClass === "education-form form-visible") {
-      this.setState({formClass: "education-form"})
+  const handleClick = async(e) => {
+    if (formClass === "education-form form-visible") {
+      await setFormClass("education-form")
       return
     }
-    this.setState({formClass: "education-form form-visible"})
+    await setFormClass("education-form form-visible")
   }
 
-  async handleSubmit(e) {
+  const handleSubmit = async(e) => {
     e.preventDefault(e)
-    if (this.state.units.length >= 3) {
+    if (units.length >= 3) {
       alert("You've reached maximum for education.");
       return
     }
 
-    await this.setState({
-      input: {
-        institution: e.target.institution.value,
-        honors: e.target.honors.value,
-        start: e.target.start.value,
-        end: e.target.end.value,
-      }
-    })
+    const input = {
+      institution: e.target.institution.value,
+      honors: e.target.honors.value,
+      start: e.target.start.value,
+      end: e.target.end.value,
+    }
 
-    await this.setState({
-      units: [...this.state.units, {key: uuidv4(), child: this.state.input}]
-    })
+    await setUnits([
+      ...units, 
+      {
+        key: uuidv4(), 
+        child: input
+      }
+    ])
+
     e.target.institution.value = '';
     e.target.honors.value = '';
     e.target.start.value = '';
     e.target.end.value = '';
-    await this.setState({formClass: "education-form"});
+
+    await setFormClass("education-form");
   }
 
-  handleEdit(e) {
-    const editBtn = document.getElementById("education-form-btn");
-    editBtn.innerText = "Edit"
-    this.setState({
-      formClass: "education-form form-visible"
+  const handleEdit = async(e) => {
+    const editBtnNode = document.getElementById("experience-form-btn");
+    editBtnNode.innerText = "Edit"
+    setFormClass("education-form form-visible")
+
+    await setForm("edit")
+    const schoolNameInput = document.getElementsByClassName("company-name-input")[0]
+    const honorsNameInput = document.getElementsByClassName("position-name-input")[0]
+    const startDateInput = document.getElementsByClassName("start-date")[0]
+    const endDateInput = document.getElementsByClassName("end-date")[0]
+
+    const key = e.target.getAttribute("data-id");
+    units.forEach(async(unit) => {
+      if (unit.key === key) {
+        schoolNameInput.value = unit.child.institution
+        honorsNameInput.value = unit.child.honors
+        startDateInput.value = unit.child.start
+        endDateInput.value = unit.child.end
+
+        await setCurrentEdit(unit.key)
+        schoolNameInput.focus()
+        return;
+      }  
     })
+    console.log("here")
+ }
 
-    this.setState({form: "edit"}, () => {
-      const schoolNameInput = document.getElementsByClassName("company-name-input")[0]
-      const honorsNameInput = document.getElementsByClassName("position-name-input")[0]
-      const startDateInput = document.getElementsByClassName("job-start-date-input")[0]
-      const endDateInput = document.getElementsByClassName("job-end-date-input")[0]
-      const key = e.target.getAttribute("data-id");
-      this.state.units.forEach(unit => {
-        if (unit.key === key) {
-          schoolNameInput.value = unit.child.institution
-          honorsNameInput.value = unit.child.honors
-          startDateInput.value = unit.child.start
-          endDateInput.value = unit.child.end
-          this.setState({currentEdit: unit.key}, () => {
-            schoolNameInput.focus()
-            return;
-          })
-        }  
-      })
-    });
-  }
-
-  async finishEdit(e) {
+ const finishEdit = async(e) => {
     e.preventDefault(e)
+
+   const input = {
+      institution: e.target.institution.value,
+      honors: e.target.honors.value,
+      start: e.target.start.value,
+      end: e.target.end.value,
+    }
+
     let oldUnitIndex;
     let oldUnitKey;
-    await this.setState({
-      input: {
-        institution: e.target.institution.value,
-        honors: e.target.honors.value,
-        start: e.target.start.value,
-        end: e.target.end.value,
+    units.forEach((unit, index) => {
+      if (unit.key === currentEdit) {
+        oldUnitIndex = index;
+        oldUnitKey = unit.key
       }
     })
-    this.state.units.forEach((unit, index) => {
-        if (unit.key === this.state.currentEdit) {
-          oldUnitIndex = index;
-          oldUnitKey = unit.key
-        }
-    })
-    const edit = {key: oldUnitKey, child: this.state.input}
-    const newUnits = this.state.units.with(oldUnitIndex, edit) // replaces unit at index with new unit and returns new array
-    await this.setState({units: newUnits})
-    await this.setState({form: "new"});
+
+    const edit = {key: oldUnitKey, child: input}
+    const newUnits = units.with(oldUnitIndex, edit) // replaces unit at index with new unit and returns new array
+    await setUnits(newUnits)
+    await setForm("new");
 
     e.target.institution.value = '';
     e.target.honors.value = '';
     e.target.start.value = '';
     e.target.end.value = '';
-    await this.setState({formClass: "education-form"});
-    const editBtn = document.getElementById("education-form-btn");
-    editBtn.innerText = "Add"
+
+    await setFormClass("education-form");
+    const editBtnNode = document.getElementById("education-form-btn");
+    editBtnNode.innerText = "Add"
     return;
   }
 
-  handleDelete(e) {
+  const handleDelete = (e) => {
     const key = e.target.getAttribute("data-id");
-    const newUnits = this.state.units.filter((unit) => {
+    const newUnits = units.filter((unit) => {
       if (unit.key !== key) {
         return unit;
       }  
     })
-    this.setState({units: newUnits})
+    setUnits(newUnits)
     return
   }
-
-  render () {
-    return (
-      <div 
-        onMouseEnter={this.handleMouseOver} 
-        onMouseLeave={this.handleMouseLeave}
-        className="education-section">
-        <div className={ this.state.editBtn }
-          onClick={this.handleClick}>
-          <i className="fa-solid fa-plus"></i>
+ 
+  return (
+    <div 
+      onMouseEnter={handleMouseOver} 
+      onMouseLeave={handleMouseLeave}
+      className="education-section">
+        <div 
+          className={ editBtn }
+          onClick={handleClick}>
+            <i className="fa-solid fa-plus"></i>
         </div>
-        <h2 className="section-heading">Experience</h2>
-        <ExperienceUnits units={this.state.units} edit={this.handleEdit} delete={this.handleDelete}/>
-        <ExperienceForm 
-          className={this.state.formClass} 
-          onSubmit={this.state.form === "new" ? this.handleSubmit : this.finishEdit}
+        <h2 
+          className="section-heading">
+            Experience
+        </h2>
+        <ExperienceUnits 
+          units={units} 
+          edit={handleEdit} 
+          deleteUnit={handleDelete}
         />
-      </div>
-    )
-  }
+        <ExperienceForm 
+          className={formClass} 
+          onSubmit={form === "new" ? handleSubmit : finishEdit}
+        />
+    </div>
+  )
 }

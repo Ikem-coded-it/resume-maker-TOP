@@ -246,16 +246,24 @@ export default function Education() {
       onMouseEnter={handleMouseOver} 
       onMouseLeave={handleMouseLeave}
       className="education-section">
-      <div className={ editBtn }
-        onClick={handleClick}>
-        <i className="fa-solid fa-plus"></i>
-      </div>
-      <h2 className="section-heading">Education</h2>
-      <EducationUnits units={units} edit={handleEdit} deleteUnit={handleDelete}/>
-      <EducationForm 
-        className={formClass} 
-        onSubmit={form === "new" ? handleSubmit : finishEdit}
-      />
+        <div 
+          className={ editBtn }
+          onClick={handleClick}>
+            <i className="fa-solid fa-plus"></i>
+        </div>
+        <h2 
+          className="section-heading">
+            Education
+        </h2>
+        <EducationUnits 
+          units={units} 
+          edit={handleEdit} 
+          deleteUnit={handleDelete}
+        />
+        <EducationForm 
+          className={formClass} 
+          onSubmit={form === "new" ? handleSubmit : finishEdit}
+        />
     </div>
   )
 }
