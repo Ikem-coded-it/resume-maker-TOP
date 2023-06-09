@@ -1,120 +1,115 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import {v4 as uuidv4} from "uuid";
 import "../styles/hobby.css";
 
-class HobbyForm extends Component {
-  render() {
+function HobbyForm ({ className, onSubmit }) {
     return (
-      <form className={this.props.className} onSubmit={this.props.onSubmit}>
-        <div className="hobby-input-container">
+      <form className={className} onSubmit={onSubmit}>
+        <div 
+          className="hobby-input-container">
           <label>Hobby</label>
-          <input type="text" name="hobby" maxLength={15} required/>
+          <input 
+            type="text" 
+            name="hobby" 
+            maxLength={15} 
+            required
+          />
         </div>
-        <div className="btn-container">
-          <button type="submit">Add hobby</button>
+        <div 
+          className="btn-container">
+          <button 
+            type="submit">
+              Add hobby
+          </button>
         </div>
       </form>
     )
-  }
 }
 
-export default class Hobby extends Component {
-  constructor(prop) {
-    super(prop)
-    this.state = {
-      hobbies: [
-        {key: uuidv4(), name: "reading"},
-        {key: uuidv4(), name: "biking"},
-      ],
-      editBtn: "hobby-edit-btn-container",
-      formClass: "hobby-form",
-      input: "",
-    }
-    this.handleMouseOver = this.handleMouseOver.bind(this)
-    this.handleMouseLeave = this.handleMouseLeave.bind(this)
-    this.handleClick = this.handleClick.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleDelete = this.handleDelete.bind(this)
+export default function Hobby () {
+  const [hobbies, setHobbies] = useState([
+    {key: uuidv4(), name: "reading"},
+    {key: uuidv4(), name: "biking"},
+  ])
+  const [editBtn, setEditBtn] = useState("hobby-edit-btn-container")
+  const [formClass, setFormClass] = useState("hobby-form")
+
+  const handleMouseOver = async() => {
+    await setEditBtn("hobby-edit-btn-container visible")
   }
 
-  async handleMouseOver() {
-    await this.setState({
-      editBtn: "hobby-edit-btn-container visible"
-    })
+  const handleMouseLeave = async() => {
+    await setEditBtn("hobby-edit-btn-container")
   }
 
-  async handleMouseLeave() {
-    await this.setState({
-      editBtn: "hobby-edit-btn-container"
-    })
-  }
-
-  handleClick(e) {
-    if (this.state.formClass === "hobby-form form-visible") {
-      this.setState({formClass: "hobby-form"})
+  const handleClick = (e) => {
+    if (formClass === "hobby-form form-visible") {
+      setFormClass("hobby-form")
       return
     }
-    this.setState({formClass: "hobby-form form-visible"})
+    setFormClass("hobby-form form-visible")
   }
 
-  async handleSubmit(e) {
+  const handleSubmit = async(e) => {
     e.preventDefault(e)
-    if (this.state.hobbies.length >= 4) {
+    if (hobbies.length >= 4) {
       alert("You've reached maximum for hobby.");
       return
     }
+    
+    const input = e.target.hobby.value
 
-    await this.setState({
-      input: e.target.hobby.value, 
-    })
-    await this.setState({
-      hobbies: [...this.state.hobbies, {key: uuidv4(), name: this.state.input}]
-    })
+    await setHobbies([...hobbies, {key: uuidv4(), name: input}])
     e.target.hobby.value = '';
     
-    await this.setState({formClass: "hobby-form"});
+    await setFormClass("hobby-form");
   }
 
-  handleDelete(e) {
+  const handleDelete = (e) => {
     const key = e.target.getAttribute("data-id");
-    const newHobbies = this.state.hobbies.filter((hobby) => {
+    const newHobbies = hobbies.filter((hobby) => {
       if (hobby.key !== key) {
         return hobby;
       }  
     })
-    this.setState({hobbies: newHobbies})
+    setHobbies(newHobbies)
     return
   }
-
-
-  render() {
-    return(
+ 
+  return(
+    <div 
+      onMouseEnter={handleMouseOver} 
+      onMouseLeave={handleMouseLeave}
+      className="hobby-section">
       <div 
-        onMouseEnter={this.handleMouseOver} 
-        onMouseLeave={this.handleMouseLeave}
-        className="hobby-section">
-        <div className={ this.state.editBtn }
-          onClick={this.handleClick}>
-          <i className="fa-solid fa-plus"></i>
-        </div>
-        <h2>Hobbies</h2>
-        <div className="hobby-list">
-          {this.state.hobbies.map((hobby, index) => {
-            return <div key={hobby.key} className="hobby-unit">
+        className={ editBtn }
+        onClick={handleClick}>
+        <i className="fa-solid fa-plus"></i>
+      </div>
+      <h2>Hobbies</h2>
+      <div 
+        className="hobby-list">
+        {hobbies.map((hobby, index) => {
+          return(
+            <div 
+              key={hobby.key} 
+              className="hobby-unit">
               <i 
                 className="fa-regular fa-trash-can fa-trash-can-hobby" 
                 data-id={hobby.key}
-                onClick={this.handleDelete}
+                onClick={handleDelete}
               ></i>
-              <p>{hobby.name}</p>
+              <p>
+                {hobby.name}
+              </p>
             </div>
-          })}
-        </div>
-        <HobbyForm 
-          className={this.state.formClass}
-          onSubmit={this.handleSubmit}
-        />
+          )
+        })}
       </div>
-    )
-  }
+      <HobbyForm 
+        className={formClass}
+        onSubmit={handleSubmit}
+      />
+    </div>
+  )
 }
